@@ -38,53 +38,48 @@ header {
   }
 }
 
-.card {
-  background: #FFFFFF;
-  border: 1px solid #F3F3F3;
-  border-radius: 40px;
-  padding: 30px;
-  width: 220px;
-  margin-right: 30px;
-  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+.cartEmpty {
+  text-align: center;
 
-  .favourite {
-    position: absolute;
-    cursor: pointer;
+  p {
+    width: 280px;
+    line-height: 24px;
   }
 
-  span {
-    font-size: 12px;
-    opacity: 0.5;
+  .greenButton {
+    width: 245px;
+    margin-top: 20px;
+
+    img {
+      position: relative;
+      top: 1px;
+      transform: rotate(180deg);
+      margin-right: 15px;
+      transition: transform 0.15s ease-in-out;
+    }
   }
 
-  b {
-    font-size: 13px;
+  .greenButton:hover {
+    img {
+      transform: rotate(180deg) translateX(3px);
+    }
   }
-  
-  h5 {
-    font-weight: 400;
-    font-size: 14px;
-  }
-}
-
-.card:hover {
-  box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.05);
-  transform: translateY(-5px);
-}
-
-.button {
-  background: #FFFFFF;
-  border: 1px solid #F2F2F2;
-  border-radius: 8px;
-  height: 32px;
-  width: 32px;
-  cursor: pointer;
 }
 
 .search-block {
   border: 1px solid #F3F3F3;
   border-radius: 10px;
   padding: 0 15px;
+  position: relative;
+
+  .clear {
+    position: absolute;
+    right: 0;
+    width: 18px;
+    height: 18px;
+    top: 13px;
+    right: 15px;
+  }
 
   input {
     border: 0;
@@ -93,38 +88,6 @@ header {
     width: 200px;
   }
 }
-
-.overlay {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.1);
-  z-index: 1;
-}
-
-.drawer {
-  position: absolute;
-  width: 420px;
-  height: 100%;
-  right: 0;
-  background: #FFFFFF;
-  box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  
-  .items {
-    overflow: auto;
-    margin-bottom: 40px;
-  }
-
-  h2 {
-    margin: 0;
-    font-size: 24px;
-  }
-} 
 
 .cartTotalBlock {
   ul {
@@ -163,6 +126,10 @@ header {
       transform: translateX(5px);
     }
   }
+
+  .greenButton:disabled {
+    animation: button-loading 0.6s ease-in-out infinite;
+  }
 }
 
 .greenButton {
@@ -184,6 +151,11 @@ header {
 
 .greenButton:active {
   background: darken(#9DD558,5%);
+}
+
+.greenButton:disabled {
+  background-color: #bebebe !important;
+  cursor: default;
 }
 
 .items {
@@ -221,6 +193,18 @@ header {
   }
 
   .removeBtn:hover {
+    opacity: 1;
+  }
+}
+
+@keyframes button-loading {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
     opacity: 1;
   }
 }
